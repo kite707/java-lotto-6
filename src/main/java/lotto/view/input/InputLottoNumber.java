@@ -8,10 +8,13 @@ import java.util.Set;
 import lotto.exception.DuplicateLottoNumberException;
 import lotto.exception.InvalidNumericInputException;
 import lotto.exception.LottoLengthException;
+import lotto.exception.LottoNumberRangeException;
 
 public class InputLottoNumber extends InputView {
     private static final String LOTTO_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final Integer LOTTO_LENGTH = 6;
+    private static final Integer START_NUMBER = 1;
+    private static final Integer END_NUMBER = 45;
 
 
     public List<Integer> getCorrectValue() {
@@ -40,6 +43,7 @@ public class InputLottoNumber extends InputView {
         validateIsNumber(split);
         List<Integer> integerInputList = convertToIntegerList(split);
         validateDuplication(integerInputList);
+        validateRange(integerInputList);
         return true;
     }
 
@@ -70,6 +74,15 @@ public class InputLottoNumber extends InputView {
         Set<Integer> numSet = new HashSet<>(inputList);
         if (numSet.size() != inputList.size()) {
             throw new DuplicateLottoNumberException();
+        }
+        return true;
+    }
+
+    private boolean validateRange(List<Integer> inputList) {
+        for (int input : inputList) {
+            if (input < START_NUMBER || input > END_NUMBER) {
+                throw new LottoNumberRangeException();
+            }
         }
         return true;
     }
