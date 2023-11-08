@@ -20,7 +20,7 @@
 ### view
 
 - [ ] 사용자로부터 값을 입력받는다.
-    - [ ] 구입 금액 입력 받기 InputMoney
+    - [x] 구입 금액 입력 받기 InputMoney
     - [ ] 보너스 번호 입력 받기 InputBonusNumber
     - [ ] 로또 번호 입력 받기 InputLottoNumber
 - [ ] 사용자에게 값을 출력해준다.
